@@ -1,0 +1,176 @@
+--// GUI Setup
+local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+local Main = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local HideButton = Instance.new("TextButton")
+local TabFrame = Instance.new("Frame")
+local TabShop = Instance.new("ScrollingFrame")
+local Drag = false
+
+-- GUI Styling
+ScreenGui.Name = "CustomGui"
+Main.Name = "Main"
+Main.Parent = ScreenGui
+Main.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.2, 0, 0.2, 0)
+Main.Size = UDim2.new(0, 500, 0, 300)
+Main.Active = true
+Main.Draggable = true
+Main.ClipsDescendants = true
+Main.BackgroundTransparency = 0
+Main.AnchorPoint = Vector2.new(0.5, 0.5)
+Main.ZIndex = 1
+Main.Visible = true
+Main.BorderMode = Enum.BorderMode.Outline
+Main.BorderColor3 = Color3.fromRGB(0, 180, 255)
+Main.BackgroundTransparency = 0.05
+Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+Main:SetAttribute("Open", true)
+Main:TweenSize(UDim2.new(0, 500, 0, 300), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.3)
+
+-- Title
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Title.Size = UDim2.new(1, 0, 0, 30)
+Title.Font = Enum.Font.GothamBold
+Title.Text = "BloxFruit GUI - Tab Shop"
+Title.TextColor3 = Color3.fromRGB(0, 200, 255)
+Title.TextSize = 16
+
+-- Hide Button
+HideButton.Name = "HideButton"
+HideButton.Parent = Main
+HideButton.BackgroundColor3 = Color3.fromRGB(0, 200, 255)
+HideButton.Position = UDim2.new(0, 0, 0, 0)
+HideButton.Size = UDim2.new(0, 40, 0, 30)
+HideButton.Text = "-"
+HideButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+HideButton.MouseButton1Click:Connect(function()
+	Main.Visible = not Main.Visible
+end)
+
+-- Tabs Frame (left vertical)
+TabFrame.Name = "TabFrame"
+TabFrame.Parent = Main
+TabFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+TabFrame.Position = UDim2.new(0, 0, 0, 30)
+TabFrame.Size = UDim2.new(0, 120, 1, -30)
+
+-- Tab Shop Content
+TabShop.Name = "TabShop"
+TabShop.Parent = Main
+TabShop.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+TabShop.Position = UDim2.new(0, 120, 0, 30)
+TabShop.Size = UDim2.new(1, -120, 1, -30)
+TabShop.CanvasSize = UDim2.new(0, 0, 10, 0)
+TabShop.ScrollBarThickness = 6
+
+-- Button Generator
+function createButton(parent, text, callback)
+	local btn = Instance.new("TextButton")
+	btn.Parent = parent
+	btn.Size = UDim2.new(1, -10, 0, 30)
+	btn.Position = UDim2.new(0, 5, 0, (#parent:GetChildren()-1) * 35)
+	btn.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
+	btn.Text = text
+	btn.Font = Enum.Font.GothamSemibold
+	btn.TextSize = 14
+	btn.TextColor3 = Color3.new(0, 0, 0)
+	btn.AutoButtonColor = true
+	btn.MouseButton1Click:Connect(callback)
+end
+
+-- MELEE
+createButton(TabShop, "[MELEE] Buy Black Leg", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
+end)
+
+createButton(TabShop, "[MELEE] Buy Electro", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectric")
+end)
+
+createButton(TabShop, "[MELEE] Buy Water Kung Fu", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyWaterKungFu")
+end)
+
+createButton(TabShop, "[MELEE] Buy Dragon Breath", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonBreath")
+end)
+
+createButton(TabShop, "[MELEE] Buy Superhuman", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+end)
+
+createButton(TabShop, "[MELEE] Buy Death Step", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+end)
+
+createButton(TabShop, "[MELEE] Buy Electric Claw", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+end)
+
+createButton(TabShop, "[MELEE] Buy Sharkman Karate", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+end)
+
+createButton(TabShop, "[MELEE] Buy Dragon Talon", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+end)
+
+createButton(TabShop, "[MELEE] Buy Godhuman", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+end)
+
+-- ABILITIES
+createButton(TabShop, "[ABILITY] Buy Geppo", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Geppo")
+end)
+
+createButton(TabShop, "[ABILITY] Buy Buso Haki", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Buso")
+end)
+
+createButton(TabShop, "[ABILITY] Buy Ken Haki", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk", "Buy")
+end)
+
+createButton(TabShop, "[ABILITY] Buy Soru", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Soru")
+end)
+
+-- RACES
+createButton(TabShop, "[RACE] Reroll Race", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RerollRace", "Pay")
+end)
+
+createButton(TabShop, "[RACE] Buy Ghoul", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Ectoplasm", "BuyGhoulRace")
+end)
+
+createButton(TabShop, "[RACE] Buy Cyborg", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyRace", "Cyborg")
+end)
+
+-- TELEPORT
+createButton(TabShop, "[TELEPORT] First Sea NPC", function()
+	local npc = workspace:FindFirstChild("Sea1TeleportNPC")
+	if npc then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.CFrame + Vector3.new(0, 5, 0)
+	end
+end)
+
+createButton(TabShop, "[TELEPORT] Second Sea NPC", function()
+	local npc = workspace:FindFirstChild("Sea2TeleportNPC")
+	if npc then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.CFrame + Vector3.new(0, 5, 0)
+	end
+end)
+
+createButton(TabShop, "[TELEPORT] Third Sea NPC", function()
+	local npc = workspace:FindFirstChild("Sea3TeleportNPC")
+	if npc then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.CFrame + Vector3.new(0, 5, 0)
+	end
+end)
