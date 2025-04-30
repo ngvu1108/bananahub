@@ -1,37 +1,28 @@
---// GUI Setup
+-- Tạo GUI chính
 local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
-ScreenGui.Name = "CustomGui"
-
-local Main = Instance.new("Frame")
-Main.Name = "Main"
-Main.Parent = ScreenGui
-Main.AnchorPoint = Vector2.new(0.5, 0.5)
-Main.Position = UDim2.new(0.5, 0, 0.5, 0)
-Main.Size = UDim2.new(0, 600, 0, 400)
-Main.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-Main.BorderColor3 = Color3.fromRGB(0, 180, 255)
+local Main = Instance.new("Frame", ScreenGui)
+Main.Size = UDim2.new(0, 420, 0, 500)
+Main.Position = UDim2.new(0.5, -210, 0.5, -250)
+Main.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 Main.BorderSizePixel = 0
-Main.BackgroundTransparency = 0.05
 Main.Active = true
 Main.Draggable = true
 
--- Title
-local Title = Instance.new("TextLabel", Main)
-Title.Size = UDim2.new(1, 0, 0, 30)
-Title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-Title.Text = "BloxFruit GUI"
-Title.TextColor3 = Color3.fromRGB(0, 200, 255)
-Title.Font = Enum.Font.GothamBold
-Title.TextSize = 16
+-- Viền xanh biển
+local border = Instance.new("UICorner", Main)
+border.CornerRadius = UDim.new(0, 😎
+local borderStroke = Instance.new("UIStroke", Main)
+borderStroke.Color = Color3.fromRGB(0, 170, 255)
+borderStroke.Thickness = 2
 
--- Hide GUI Button
-local HideButton = Instance.new("TextButton", Main)
-HideButton.Position = UDim2.new(1, -40, 0, 0)
-HideButton.Size = UDim2.new(0, 40, 0, 30)
-HideButton.Text = "-"
-HideButton.TextColor3 = Color3.new(0, 0, 0)
-HideButton.BackgroundColor3 = Color3.fromRGB(0, 200, 255)
-HideButton.MouseButton1Click:Connect(function()
+-- Nút ẩn hiện GUI
+local Toggle = Instance.new("TextButton", ScreenGui)
+Toggle.Size = UDim2.new(0, 100, 0, 30)
+Toggle.Position = UDim2.new(0, 20, 0, 20)
+Toggle.Text = "Toggle GUI"
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+Toggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+Toggle.MouseButton1Click:Connect(function()
 	Main.Visible = not Main.Visible
 end)
 
@@ -93,19 +84,19 @@ createButton(TabShop, "[REDEEM] Code: Sub2NoobMaster123", function()
 end)
 
 -- // Teleports
-createButton(TabShop, "[TELEPORT] First Sea NPC", function()
+createButton(TabShop, "First Sea", function()
 	local npc = workspace:FindFirstChild("Sea1TeleportNPC")
 	if npc then
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.CFrame + Vector3.new(0, 5, 0)
 	end
 end)
-createButton(TabShop, "[TELEPORT] Second Sea NPC", function()
+createButton(TabShop, "Second Sea", function()
 	local npc = workspace:FindFirstChild("Sea2TeleportNPC")
 	if npc then
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.CFrame + Vector3.new(0, 5, 0)
 	end
 end)
-createButton(TabShop, "[TELEPORT] Third Sea NPC", function()
+createButton(TabShop, "Third Sea", function()
 	local npc = workspace:FindFirstChild("Sea3TeleportNPC")
 	if npc then
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.CFrame + Vector3.new(0, 5, 0)
@@ -126,38 +117,38 @@ local meleeStyles = {
 	{"Godhuman", "BuyGodhuman"},
 }
 for _, style in ipairs(meleeStyles) do
-	createButton(TabShop, "[MELEE] Buy "..style[1], function()
+	createButton(TabShop, " Buy "..style[1], function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(style[2])
 	end)
 end
 
 -- // Abilities
-createButton(TabShop, "[ABILITY] Buy Geppo", function()
+createButton(TabShop, "Geppo", function()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Geppo")
 end)
-createButton(TabShop, "[ABILITY] Buy Buso Haki", function()
+createButton(TabShop, "Buso Haki", function()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Buso")
 end)
-createButton(TabShop, "[ABILITY] Buy Ken Haki", function()
+createButton(TabShop, "Ken Haki", function()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk", "Buy")
 end)
-createButton(TabShop, "[ABILITY] Buy Soru", function()
+createButton(TabShop, "Soru", function()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Soru")
 end)
 
 -- // Race
-createButton(TabShop, "[RACE] Reroll Race", function()
+createButton(TabShop, "Reroll Race", function()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RerollRace", "Pay")
 end)
-createButton(TabShop, "[RACE] Buy Ghoul", function()
+createButton(TabShop, "Buy Ghoul", function()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Ectoplasm", "BuyGhoulRace")
 end)
-createButton(TabShop, "[RACE] Buy Cyborg", function()
+createButton(TabShop, "Buy Cyborg", function()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyRace", "Cyborg")
 end)
 
 -- // Reset
-createButton(TabShop, "[RESET] Stats", function()
+createButton(TabShop, "RESET Stats", function()
 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ResetStat", "All")
 end)
 
