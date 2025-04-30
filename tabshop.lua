@@ -1,4 +1,4 @@
--- Tạo GUI chính
+--// GUI Setup 
 local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
 local Main = Instance.new("Frame", ScreenGui)
 Main.Size = UDim2.new(0, 420, 0, 500)
