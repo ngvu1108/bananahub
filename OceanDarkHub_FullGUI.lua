@@ -813,14 +813,14 @@ function CheckLevel()
             NameQuest = "SubmergedQuest1"
             QuestLv = 2
             NameMon = "Coral Pirate"
-            CFrameQ = CFrame.new(10779.6943359375, -2007.490478515625, 9262.912109375)
+            CFrameQ = CFrame.new(10882.447265625, -2085.974609375, 10032.2080078125)
             CFrameMon = CFrame.new(10586.591796875, -2087.4951171875, 10083.6142578125)
         elseif (Lv >= 2650 and Lv <= 2674) or _G.SelectMonster == "Sea Chanter [Lv. 2650]" then
             Ms = "Sea Chanter"
             NameQuest = "SubmergedQuest2"
             QuestLv = 1
             NameMon = "Sea Chanter"
-            CFrameQ = CFrame.new(10808.6650390625, -2865.9743652344, 10432.89453125)
+            CFrameQ = CFrame.new(10882.447265625, -2085.974609375, 10032.2080078125)
             CFrameMon = CFrame.new(11025.0546875, -2081.2822265625, 10142.8828125)
         elseif (Lv >= 2675 and Lv <= 2699) or _G.SelectMonster == "Ocean Prophet [Lv. 2675]" then
             Ms = "Ocean Prophet"
